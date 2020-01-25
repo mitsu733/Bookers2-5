@@ -1,0 +1,12 @@
+<% if user_signed_in? && @book.user == current_user %>
+<%= render "devise/shared/header" %>
+
+<h1>Editing Book</h1>
+<%= form_for(@book) do |f| %>
+<h4>Title</h4>
+<%= f.text_field :title %>
+<h4>Opinion</h4>
+<%= f.text_area :body %>
+<%= f.submit "Update Book" %>
+<% end %>
+<% end %>

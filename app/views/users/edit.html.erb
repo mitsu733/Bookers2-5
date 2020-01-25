@@ -1,0 +1,26 @@
+<%= render "devise/shared/header" %>
+
+    <h1>User info</h1>
+
+
+
+    <%= form_for(@user) do |f| %>
+        <div>
+            <h2>Name</h2>
+            <%= f.text_field :name %>
+        </div>
+
+        <div>
+        <h2>Image</h2>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+        </div>
+
+        <div>
+            <h2>Introduction</h2>
+            <%= f.text_area :introduction %>
+        </div>
+
+
+        <%= f.submit "Update User" %>
+
+    <% end %>

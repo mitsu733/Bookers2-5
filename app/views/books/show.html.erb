@@ -1,0 +1,30 @@
+<%= render "devise/shared/header" %>
+
+<%= render "devise/shared/side_bar", book: @booknew, user: @userself %>
+
+		<div class="col-lg-8">
+			<h1>Books</h1>
+			<table class = "table">
+				<tr>
+				<th></th>
+				<th>Title</th>
+				<th>Opinion</th>
+				<th></th>
+				<th></th>
+				</tr>
+				<tr>
+				<td>
+					<%= attachment_image_tag @book.user, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>
+				</td>
+				<td><%= @book.title %></td>
+				<td><%= @book.body %></td>
+				<% if user_signed_in? && @book.user == current_user %>
+				<td><%= link_to "edit", edit_book_path(@book) %></td>
+				<td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
+				<% end %>
+			</tr>
+			</table>
+
+		</div>
+	</div>
+</div>
