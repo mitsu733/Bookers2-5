@@ -1,6 +1,16 @@
+
 <%= render "devise/shared/header" %>
 
     <h1>User info</h1>
+ 
+ <% if @user.errors.any? %>
+ <ul>
+    <li>error</li>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+ </ul>
+ <% end %>
 
 
 

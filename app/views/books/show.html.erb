@@ -2,25 +2,29 @@
 
 <%= render "devise/shared/side_bar", book: @booknew, user: @userself %>
 
-		<div class="col-lg-8">
-			<h1>Books</h1>
+		<div class="col-xs-9">
+			<h1>Book detail</h1>
 			<table class = "table">
 				<tr>
-				<th></th>
-				<th>Title</th>
-				<th>Opinion</th>
-				<th></th>
-				<th></th>
-				</tr>
-				<tr>
 				<td>
-					<%= attachment_image_tag @book.user, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>
+					<%= link_to user_path(@book.user) do %>
+					<%= attachment_image_tag @book.user, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %><br>
+					 <%=  @book.user.name %>
+					<% end %>
 				</td>
 				<td><%= @book.title %></td>
 				<td><%= @book.body %></td>
 				<% if user_signed_in? && @book.user == current_user %>
-				<td><%= link_to "edit", edit_book_path(@book) %></td>
-				<td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
+				<td>
+					<span class="label label-success">
+					<%= link_to "Edit", edit_book_path(@book) %>
+					</span>
+				</td>
+				<td>
+					<span class="label label-danger">
+						<%= link_to "Destroy", book_path(@book), method: :delete %>
+					</span>
+				</td>
 				<% end %>
 			</tr>
 			</table>

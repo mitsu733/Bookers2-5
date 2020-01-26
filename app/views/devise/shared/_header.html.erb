@@ -1,36 +1,72 @@
-<div>
-<ul>
+<nav class="navbar navbar-fixed-top">
+	<div class="head-nav">
+
+
 <% if user_signed_in? %>
-<li class="">
-	<%= link_to "Home",user_path(current_user.id) %>
-</li>
+	<h4>Bookers</h4>
+	<ul class="nav-list">
 
-<li class="">
-	<%= link_to "Users",users_path %>
-</li>
-
-<li class="">
-	<%= link_to "Books",books_path %>
-</li>
-
-<li class="">
-	<%= link_to "logout",destroy_user_session_path, method: :delete %>
-</li>
+		<li class="nav-list-item">
+			<%= link_to user_path(current_user.id) do %>
+				<span class="glyphicon glyphicon-home" aria-hidden="true">
+				Home
+				</span>
+			<% end %>
+		</li>
+		<li class="nav-list-item">
+			<%= link_to users_path do %>
+				<span class="glyphicon glyphicon-user" aria-hidden="true">
+				Users
+				</span>
+			<% end %>
+		</li>
+		<li class="nav-list-item">
+			<%= link_to books_path do %>
+				<span class="glyphicon glyphicon-book" aria-hidden="true">
+				Books
+				</span>
+			<% end %>
+		</li>
+		<li class="nav-list-item">
+			<%= link_to destroy_user_session_path, method: :delete do %>
+				<span class="glyphicon glyphicon-log-out" aria-hidden="true">
+				logout
+				</span>
+			<% end %>
+		</li>
 
 <% else %>
 
-<li class="">
-	<%= link_to "Home",root_path %>
-</li>
-
-<li class="">
-	<%= link_to "sign up",new_user_session_path  %>
-</li>
-
-<li class="">
-	<%= link_to "login",new_user_registration_path  %>
-</li>
-
+		<li class="nav-list-item">
+			<%= link_to root_path do %>
+				<span class="glyphicon glyphicon-home" aria-hidden="true">
+				Home
+				</span>
+			<% end %>
+		</li>
+		<li class="nav-list-item">
+			<%= link_to home_about_path do %>
+				<span class="glyphicon glyphicon-link" aria-hidden="true">
+				About
+				</span>
+			<% end %>
+		</li>
+		<li class="nav-list-item">
+			<%= link_to new_user_registration_path do %>
+				<span class="glyphicon glyphicon-edit" aria-hidden="true">
+				Sign up
+				</span>
+			<% end %>
+		</li>
+		<li class="nav-list-item">
+			<%= link_to new_user_session_path do %>
+				<span class="glyphicon glyphicon-log-out" aria-hidden="true">
+				login
+				</span>
+			<% end %>
+		</li>
+	</ul>
 <% end %>
-</ul>
+
 </div>
+</nav>

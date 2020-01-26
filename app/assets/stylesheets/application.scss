@@ -13,5 +13,78 @@
  *= require_tree .
  *= require_self
  */
+
   @import "bootstrap-sprockets";
   @import "bootstrap";
+
+
+/* common */
+ 
+ * {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+  }
+
+  body{
+  padding-top: 90px;
+  }
+
+  a {
+  color: gray;
+  text-decoration: none;
+  }
+  a:hover {
+  color: #ffff;
+  }
+
+
+
+  .head-nav{
+  padding: 10px;
+  position: relative;
+  background-color: #000000;
+  }
+  .application-title{
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  color: #fff;
+  }
+  .nav-list{
+  width: 90%;
+  text-align: right;
+  padding: 10px 0;
+  margin: 0 auto;
+  }
+  .nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  color: #fff;
+  }
+  .home{
+	width: 40%;
+	margin: 80px auto 0 auto;
+   }
+   .botton{
+   width: 30%;
+   margin: 0 auto;
+   }
+
+   .about{
+   width: 50%;
+   margin: 50px 100px;
+   }
+   .about h1{
+   font-size: 40px;
+   }
+
+   .label{
+   font-size: 13px;
+   }
+
+   .books-edit-box{
+   width: 570px;
+   margin: 50px auto;
+   }

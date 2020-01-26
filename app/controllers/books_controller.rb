@@ -1,8 +1,7 @@
 class BooksController < ApplicationController
-	before_action :authenticate_user!, except: [:home]
+	before_action :authenticate_user!
 
-	def home
-	end
+
 
 	def create
 			@booknew = Book.new(book_params)
@@ -30,12 +29,18 @@ class BooksController < ApplicationController
 
 	def edit
 		@book = Book.find(params[:id])
+	if	@book.user_id != current_user.id
+		redirect_to books_path
+	end
 	end
 
 	def update
-			book = Book.find(params[:id])
-			book.update(book_params)
-			redirect_to book, notice: "successfully !"
+			@book = Book.find(params[:id])
+		if	@book.update(book_params)
+			redirect_to book_path(@book), notice: "successfully !"
+		else
+			render :edit
+		end
 	end
 
 	def destroy
