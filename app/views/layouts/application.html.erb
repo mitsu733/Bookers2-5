@@ -11,6 +11,93 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-fixed-top">
+  <div class="head-nav">
+
+
+<% if user_signed_in? %>
+  <h4>Bookers</h4>
+  <ul class="nav-list">
+
+    <li class="nav-list-item">
+      <%= link_to user_path(current_user.id) do %>
+        <span class="glyphicon glyphicon-home" aria-hidden="true">
+        Home
+        </span>
+      <% end %>
+    </li>
+    <li class="nav-list-item">
+      <%= link_to users_path do %>
+        <span class="glyphicon glyphicon-user" aria-hidden="true">
+        Users
+        </span>
+      <% end %>
+    </li>
+    <li class="nav-list-item">
+      <%= link_to books_path do %>
+        <span class="glyphicon glyphicon-book" aria-hidden="true">
+        Books
+        </span>
+      <% end %>
+    </li>
+    <li class="nav-list-item">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true">
+        logout
+        </span>
+      <% end %>
+    </li>
+  </ul>
+  </div>
+</nav>
+    <div class="search">
+    <%= form_tag(search_path, method: :get) do %>
+      <%= text_field_tag :search_word, {}, :value => params[:search_word] %>
+      <%= select_tag :search_range, options_for_select([["User","user"], ["Book","book"]], @searches) %>
+      <%= select_tag :search_method,  options_for_select([["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]],@searches) %>
+      <%= submit_tag "検索" %>
+    <% end %>
+    </div>
+
+<% else %>
+  <nav class="navbar navbar-fixed-top">
+  <div class="head-nav">
+  <ul class="nav-list">
+    <li class="nav-list-item">
+      <%= link_to root_path do %>
+        <span class="glyphicon glyphicon-home" aria-hidden="true">
+        Home
+        </span>
+      <% end %>
+    </li>
+    <li class="nav-list-item">
+      <%= link_to home_about_path do %>
+        <span class="glyphicon glyphicon-link" aria-hidden="true">
+        About
+        </span>
+      <% end %>
+    </li>
+    <li class="nav-list-item">
+      <%= link_to new_user_registration_path do %>
+        <span class="glyphicon glyphicon-edit" aria-hidden="true">
+        Sign up
+        </span>
+      <% end %>
+    </li>
+    <li class="nav-list-item">
+      <%= link_to new_user_session_path do %>
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true">
+        login
+        </span>
+      <% end %>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<%end%>
+
     <%= yield %>
+
   </body>
 </html>
